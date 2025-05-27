@@ -1,7 +1,7 @@
 class GlobalCountdowns {
     static async init() {
         try {
-            const response = await fetch('../global-countdowns.json');
+            const response = await fetch('https://kasepuu.github.io/countdown/global-countdowns.json');
             const globalCountdowns = await response.json();
             
             if (globalCountdowns.countdowns) {
