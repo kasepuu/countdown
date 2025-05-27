@@ -35,4 +35,4 @@ class TimePicker {
 
 document.addEventListener('DOMContentLoaded', () => {
     TimePicker.init();
-}); ˇ
+});
