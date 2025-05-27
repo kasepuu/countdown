@@ -1,0 +1,12 @@
+{
+    "countdowns": [
+        {
+            "title": "🎉 New Year 2025",
+            "targetDate": "2025-01-01T00:00:00Z"
+        },
+        {
+            "title": "🌍 Earth Day 2024",
+            "targetDate": "2024-04-22T00:00:00Z"
+        }
+    ]
+} 
