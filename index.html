@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="theme-picker-container">
+            <button class="theme-picker-btn" title="Change Theme">🎨</button>
+            <div class="theme-dropdown">
+                <div class="theme-item" data-theme="ocean">
+                    <div class="theme-preview" style="background: linear-gradient(45deg, #7fdbff, #00a8ff);"></div>
+                    <span class="theme-name">Ocean</span>
+                </div>
+                <div class="theme-item" data-theme="forest">
+                    <div class="theme-preview" style="background: linear-gradient(45deg, #2ecc71, #27ae60);"></div>
+                    <span class="theme-name">Forest</span>
+                </div>
+                <div class="theme-item" data-theme="sunset">
+                    <div class="theme-preview" style="background: linear-gradient(45deg, #e74c3c, #f39c12);"></div>
+                    <span class="theme-name">Sunset</span>
+                </div>
+                <div class="theme-item" data-theme="lavender">
+                    <div class="theme-preview" style="background: linear-gradient(45deg, #9b59b6, #8e44ad);"></div>
+                    <span class="theme-name">Lavender</span>
+                </div>
+                <div class="theme-item" data-theme="midnight">
+                    <div class="theme-preview" style="background: linear-gradient(45deg, #34495e, #2c3e50);"></div>
+                    <span class="theme-name">Midnight</span>
+                </div>
+            </div>
+        </div>
+        <div class="countdown-container">
+            <div class="title-container">
+                <a href="/" class="back-btn">←</a>
+                <h1>Countdown App</h1>
+            </div>
+            <div class="add-countdown">
+                <input type="text" id="countdownTitle" class="text-input" placeholder="Enter countdown title">
+                <input type="date" id="targetDate" class="date-input">
+                <div class="time-picker">
+                    <select id="hours" class="time-select"></select>
+                    <span class="time-separator">:</span>
+                    <select id="minutes" class="time-select"></select>
+                </div>
+                <button id="addCountdown" class="btn">Add Countdown</button>
+            </div>
+            <div id="countdownsList" class="countdowns-list"></div>
+        </div>
+    </div>
+    <script src="src/time-picker.js"></script>
+    <script src="src/emoticon-picker.js"></script>
+    <script src="src/theme-manager.js"></script>
+    <script src="src/countdown.js"></script>
+    <script src="src/global-countdowns.js"></script>
+    <script src="src/script.js"></script>
+</body>
+</html> 
