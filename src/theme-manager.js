@@ -90,6 +90,7 @@ class ThemeManager {
         if (this.themes[theme]) {
             localStorage.setItem('theme', theme);
             this.applyTheme(theme);
+            document.dispatchEvent(new Event('themeChanged'));
         }
     }
 
