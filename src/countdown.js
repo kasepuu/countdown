@@ -1,10 +1,34 @@
 class Countdown {
+    static timeOffset = 0;
+    static isSynced = false;
+
     constructor(title, targetDate, id = null) {
         this.title = title;
         this.targetDate = new Date(targetDate);
         this.element = null;
         this.interval = null;
         this.id = id || Math.random().toString(36).substr(2, 9);
+    }
+
+    static async syncTime() {
+        if (this.isSynced) return;
+        
+        try {
+            const response = await fetch('https://worldtimeapi.org/api/timezone/Europe/Tallinn');
+            const data = await response.json();
+            const serverTime = new Date(data.datetime);
+            const localTime = new Date();
+            this.timeOffset = serverTime - localTime;
+            this.isSynced = true;
+            console.log('Time synced with server');
+        } catch (error) {
+            console.error('Error syncing time:', error);
+            this.timeOffset = 0;
+        }
+    }
+
+    static getCurrentTime() {
+        return new Date(Date.now() + this.timeOffset);
     }
 
     createElement() {
@@ -77,19 +101,8 @@ class Countdown {
         return emoticonMap.default;
     }
 
-    static async getCurrentTime() {
-        try {
-            const response = await fetch('https://worldtimeapi.org/api/timezone/Europe/Tallinn');
-            const data = await response.json();
-            return new Date(data.datetime);
-        } catch (error) {
-            console.error('Error fetching current time:', error);
-            return new Date();
-        }
-    }
-
     async updateCountdown() {
-        const now = await Countdown.getCurrentTime();
+        const now = Countdown.getCurrentTime();
         const timeLeft = this.targetDate - now;
 
         const days = Math.floor(Math.abs(timeLeft) / (1000 * 60 * 60 * 24));
@@ -133,7 +146,8 @@ class Countdown {
 class CountdownManager {
     static countdowns = [];
 
-    static init() {
+    static async init() {
+        await Countdown.syncTime();
         if (this.countdowns.length === 0) {
             this.loadCountdowns();
         }
