@@ -9,9 +9,9 @@ class HitsCounter {
                           window.location.hostname.includes('.local') ||
                           window.location.hostname.includes('.test');
         
-        const counterLink = document.createElement('a');
-        counterLink.href = 'https://hits.sh/joelsoft.eu/countdown/';
-        counterLink.target = '_blank';
+        const counterButton = document.createElement('button');
+        counterButton.className = 'hits-button';
+        counterButton.title = 'Click to view hits counter';
         
         const counterImg = document.createElement('img');
         counterImg.alt = 'Hits';
@@ -28,8 +28,14 @@ class HitsCounter {
         const extraCount = isLocalhost ? 0 : 1;
         counterImg.src = `https://hits.sh/joelsoft.eu/countdown.svg?view=today-total&style=for-the-badge&label=visits&extraCount=${extraCount}&color=${primaryColor}&labelColor=${secondaryColor}`;
         
-        counterLink.appendChild(counterImg);
-        hitsCounter.appendChild(counterLink);
+        counterButton.appendChild(counterImg);
+        hitsCounter.appendChild(counterButton);
+
+        counterButton.addEventListener('click', () => {
+            if (confirm('Would you like to visit the hits counter page?')) {
+                window.open('https://hits.sh/joelsoft.eu/countdown/', '_blank');
+            }
+        });
 
         document.addEventListener('themeChanged', () => {
             const newPrimaryColor = getComputedStyle(document.documentElement)

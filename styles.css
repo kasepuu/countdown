@@ -618,14 +618,22 @@ h1 {
     opacity: 1;
 }
 
-.hits-counter img {
-    height: 28px;
-    transition: transform 0.3s ease;
+.hits-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
     display: block;
 }
 
-.hits-counter img:hover {
+.hits-button:hover {
     transform: scale(1.05);
+}
+
+.hits-button img {
+    height: 28px;
+    transition: transform 0.3s ease;
+    display: block;
 }
 
 @media (max-width: 600px) {
