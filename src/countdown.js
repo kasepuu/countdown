@@ -212,13 +212,28 @@ class CountdownManager {
     }
 
     static showError(element, message) {
-        const errorMessage = document.createElement('div');
-        errorMessage.className = 'error-message';
-        errorMessage.textContent = message;
-        errorMessage.style.color = 'var(--completed-color)';
-        errorMessage.style.marginTop = '5px';
-        errorMessage.style.fontSize = '0.9em';
-        element.parentNode.appendChild(errorMessage);
+        const existingToast = document.querySelector('.toast-notification');
+        if (existingToast) {
+            existingToast.remove();
+        }
+
+        const toast = document.createElement('div');
+        toast.className = 'toast-notification';
+        toast.textContent = message;
+
+        toast.addEventListener('click', () => {
+            toast.classList.add('fade-out');
+            setTimeout(() => toast.remove(), 300);
+        });
+
+        document.body.appendChild(toast);
+
+        setTimeout(() => {
+            if (toast.parentNode) {
+                toast.classList.add('fade-out');
+                setTimeout(() => toast.remove(), 300);
+            }
+        }, 5000);
     }
 
     static addCountdown(countdown) {

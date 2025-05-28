@@ -529,4 +529,59 @@ h1 {
 .back-btn:hover {
     background: var(--accent-color);
     transform: scale(1.1);
+}
+
+.toast-notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--secondary-color);
+    color: #ff4444;
+    padding: 12px 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    cursor: pointer;
+    border: 2px solid #ff4444;
+    animation: slideUp 0.3s ease-out, blink 1s infinite;
+    transition: opacity 0.3s ease;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 68, 68, 0.3);
+}
+
+.toast-notification:hover {
+    background: var(--hover-color);
+    animation: none;
+    border-color: #ff6666;
+}
+
+@keyframes blink {
+    0% {
+        border-color: #ff4444;
+        box-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
+    }
+    50% {
+        border-color: #ff6666;
+        box-shadow: 0 0 20px rgba(255, 68, 68, 0.8);
+    }
+    100% {
+        border-color: #ff4444;
+        box-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translate(-50%, 100%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+}
+
+.toast-notification.fade-out {
+    opacity: 0;
 } 
