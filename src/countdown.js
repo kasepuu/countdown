@@ -53,8 +53,7 @@ class Countdown {
 
         const titleElement = document.createElement('div');
         titleElement.className = 'countdown-title';
-        const emoticon = EmoticonPicker.getEmoticon(this.title);
-        titleElement.innerHTML = `${emoticon} ${this.title}`;
+        titleElement.innerHTML = this.title || 'Untitled Countdown';
 
         const countdownDiv = document.createElement('div');
         countdownDiv.className = 'countdown';
@@ -73,32 +72,6 @@ class Countdown {
         countdownItem.append(deleteBtn, titleElement, countdownDiv);
         this.element = countdownItem;
         return countdownItem;
-    }
-
-    getEmoticon() {
-        const emoticonMap = {
-            birthday: '🎂',
-            wedding: '💒',
-            vacation: '✈️',
-            holiday: '🎄',
-            exam: '📚',
-            party: '🎉',
-            graduation: '🎓',
-            newyear: '🎆',
-            christmas: '🎅',
-            halloween: '🎃',
-            easter: '🐰',
-            valentine: '❤️',
-            default: '⏰'
-        };
-
-        const lowerTitle = this.title.toLowerCase();
-        for (const [key, emoticon] of Object.entries(emoticonMap)) {
-            if (lowerTitle.includes(key)) {
-                return emoticon;
-            }
-        }
-        return emoticonMap.default;
     }
 
     async updateCountdown() {
@@ -212,10 +185,10 @@ class CountdownManager {
     }
 
     static showError(element, message) {
-        const existingToast = document.querySelector('.toast-notification');
-        if (existingToast) {
-            existingToast.remove();
-        }
+        const existingToasts = document.querySelectorAll('.toast-notification');
+        existingToasts.forEach(toast => {
+            toast.remove();
+        });
 
         const toast = document.createElement('div');
         toast.className = 'toast-notification';

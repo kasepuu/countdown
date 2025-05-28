@@ -102,7 +102,7 @@ class EmoticonPicker {
                 return emoticon;
             }
         }
-        return this.emoticonMap.default;
+        return '';
     }
 }
 
