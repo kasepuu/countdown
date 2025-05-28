@@ -40,7 +40,7 @@ class HitsCounter {
                 .getPropertyValue('--secondary-color')
                 .trim()
                 .replace('#', '');
-            counterImg.src = `https://hits.sh/joelsoft.eu/countdown.svg?style=plastic&label=visits&extraCount=${extraCount}&color=${newPrimaryColor}&labelColor=${newSecondaryColor}`;
+            counterImg.src = `https://hits.sh/joelsoft.eu/countdown.svg?view=today-total&style=for-the-badge&label=visits&extraCount=${extraCount}&color=${newPrimaryColor}&labelColor=${newSecondaryColor}`;
         });
     }
 }
